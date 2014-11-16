@@ -9,6 +9,9 @@ document.body.appendChild(canvas);
 // Background image
 var bgReady = false;
 var bgImage = new Image();
+var gameOverImg = new Image();
+gameOverImg.src = "images/gameover.jpg";
+
 bgImage.onload = function () {
 	bgReady = true;
 };
@@ -35,7 +38,8 @@ var nakov = {
 	speed: 256 // movement in pixels per second
 };
 var beer = {};
-var beersCaught = 0;
+var beersToDrink = 10;
+var level = 1;
 
 // Handle keyboard controls
 var keysDown = {};
@@ -88,8 +92,17 @@ var update = function (modifier) {
 		&& nakov.y <= (beer.y + 58)
 		&& beer.y <= (nakov.y + 65)
 	) {
-		++beersCaught;
+		--beersToDrink;
 		resetBeerPosition();
+	}
+
+
+	if (beersToDrink == 0){
+		reset();
+		nakov.speed -= 50;
+		remainingTime = 30;
+		beersToDrink = 15;
+		level++;
 	}
 };
 
@@ -107,13 +120,22 @@ var render = function () {
 		ctx.drawImage(beerImage, beer.x, beer.y);
 	}
 
-	// Score
-	ctx.fillStyle = "black";
+	// Score Level Time
+	ctx.fillStyle = "#000033";
 	ctx.font = "bold 30px Helvetica";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
-	ctx.fillText("Beers drunk: " + beersCaught, 32, 32);
+	ctx.fillText("Beers to drink: " + beersToDrink , 12, 12);
+	ctx.fillText("Time Left: " + remainingTime, 460,12);
+	ctx.fillText("Level: " + level, 12, 430);
+
+	// Death Check
+	if (remainingTime == 0){
+		ctx.drawImage(gameOverImg, 0, 0);
+		cancelRequestAnimationFrame(1);
+	}
 };
+
 
 // The main game loop
 var main = function () {
@@ -125,7 +147,7 @@ var main = function () {
 
 	then = now;
 
-	// Request to do this again ASAP
+	//Request to do this again ASAP
 	requestAnimationFrame(main);
 };
 
@@ -135,5 +157,13 @@ requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame
 
 // Let's play this game!
 var then = Date.now();
+var remainingTime = 30;
 reset();
 main();
+
+function countDown() {
+	if (remainingTime > 0) {
+		remainingTime--;
+	}
+}
+setInterval(countDown,1000);
