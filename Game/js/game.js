@@ -114,8 +114,6 @@ var update = function (modifier) {
 		rakiyaReady = false;
 	}
 
-	console.log("rakiya ->" + rakiya.x);
-	console.log("nakov ->" + nakov.x);
 	// Are they touching?
 	if (
 		nakov.x <= (beer.x + 52)
