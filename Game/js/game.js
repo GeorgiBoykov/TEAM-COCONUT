@@ -23,7 +23,7 @@ var nakovImage = new Image();
 nakovImage.onload = function () {
 	nakovReady = true;
 };
-nakovImage.src = "images/nakov.png";
+nakovImage.src = "images/nakov4.png";
 
 // beer image
 var beerReady = false;
