@@ -106,7 +106,7 @@ var update = function (modifier) {
 		}
 	}
 
-	// rakia
+	// rakiya
 
 	if (beersToDrink % 4 == 0){
 		rakiyaReady = true;
@@ -114,6 +114,8 @@ var update = function (modifier) {
 		rakiyaReady = false;
 	}
 
+	console.log("rakiya ->" + rakiya.x);
+	console.log("nakov ->" + nakov.x);
 	// Are they touching?
 	if (
 		nakov.x <= (beer.x + 52)
@@ -124,7 +126,7 @@ var update = function (modifier) {
 		--beersToDrink;
 		resetBeerPosition();
 	} else if (nakov.x <= (rakiya.x + 10)
-		&& rakiya.x <= (nakov.x + 46)
+		&& rakiya.x <= (nakov.x + 10)
 		&& nakov.y <= (rakiya.y + 58)
 		&& rakiya.y <= (nakov.y + 65)
 	) {
