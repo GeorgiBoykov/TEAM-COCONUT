@@ -1,0 +1,43 @@
+body{
+    background-image: url("../images/background-img.jpg");
+    background-size: 100%;
+    background-position-y: 4%;
+}
+
+header{
+    margin-left: 13%;
+    margin-top: -4%;
+}
+
+header p{
+    color: white;
+    font-family: papyrus, arial;
+    font-size: 95px;
+    font-weight: bold;
+}
+
+header p::first-letter{
+    font-size: 105px;
+}
+
+nav{
+    margin-top: -3%;
+    margin-left: 15%;
+}
+
+nav ul{
+    list-style: none;
+}
+
+nav ul li{
+    margin-top: 1.5%;
+    width: 30%;
+
+    text-align: center;
+}
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 38px;
+}
