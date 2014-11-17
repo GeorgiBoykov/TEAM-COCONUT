@@ -6,6 +6,8 @@ canvas.height = 480;
 canvas.style.border = "2px solid black";
 document.body.appendChild(canvas);
 
+var remainingTime = 30;
+
 // Background image
 var bgReady = false;
 var bgImage = new Image();
@@ -73,16 +75,24 @@ var resetBeerPosition = function () {
 // Update game objects
 var update = function (modifier) {
 	if (38 in keysDown) { // Player holding up
-		nakov.y -= nakov.speed * modifier;
+		if (nakov.y > 0){
+			nakov.y -= nakov.speed * modifier;
+		}
 	}
 	if (40 in keysDown) { // Player holding down
-		nakov.y += nakov.speed * modifier;
+		if (nakov.y < canvas.height - 77){
+			nakov.y += nakov.speed * modifier;
+		}
 	}
 	if (37 in keysDown) { // Player holding left
-		nakov.x -= nakov.speed * modifier;
+		if (nakov.x > 0){
+			nakov.x -= nakov.speed * modifier;
+		}
 	}
 	if (39 in keysDown) { // Player holding right
-		nakov.x += nakov.speed * modifier;
+		if (nakov.x < canvas.width - 50){
+			nakov.x += nakov.speed * modifier;
+		}
 	}
 
 	// Are they touching?
@@ -136,6 +146,12 @@ var render = function () {
 	}
 };
 
+function countDown() {
+	if (remainingTime > 0) {
+		remainingTime--;
+	}
+}
+setInterval(countDown,1000);
 
 // The main game loop
 var main = function () {
@@ -157,13 +173,5 @@ requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame
 
 // Let's play this game!
 var then = Date.now();
-var remainingTime = 30;
 reset();
 main();
-
-function countDown() {
-	if (remainingTime > 0) {
-		remainingTime--;
-	}
-}
-setInterval(countDown,1000);
