@@ -7,6 +7,7 @@ canvas.style.border = "2px solid black";
 document.body.appendChild(canvas);
 
 var remainingTime = 30;
+var rakiyaTimeOut;
 
 // Background image
 var bgReady = false;
@@ -38,7 +39,11 @@ beerImage.src = "images/beer.png";
 
 //rakiya image
 var rakiyaReady = false;
+var throwRakiya = false;
 var rakiyaImage = new Image();
+rakiyaImage.onload = function () {
+	rakiyaReady = true;
+};
 rakiyaImage.src = "images/rakiya.png";
 
 // Game objects
@@ -48,7 +53,8 @@ var nakov = {
 
 var rakiya = {};
 var beer = {};
-var beersToDrink = 10;
+var beersToDrink = 20;
+var beersToRakia = 4;
 var level = 1;
 
 // Handle keyboard controls
@@ -70,16 +76,30 @@ var reset = function () {
 	// Throw the beer somewhere on the screen randomly
 	beer.x = 32 + (Math.random() * (canvas.width - 80));
 	beer.y = 32 + (Math.random() * (canvas.height - 80));
+
+	// Throw rakiya somewhere on the screen randomly
+	rakiya.x = 32 + (Math.random() * (canvas.width - 90));
+	rakiya.y = 32 + (Math.random() * (canvas.height - 90));
 };
 
 var resetBeerPosition = function () {
 	// Throw the beer somewhere on the screen randomly
 	beer.x = 32 + (Math.random() * (canvas.width - 80));
 	beer.y = 32 + (Math.random() * (canvas.height - 80));
+
+	if (beersToRakia == 0){
+	    rakiyaTimeOut = 3;
+		resetRakiyaPosition();
+	}
+	if (beersToRakia < 0){
+	    beersToRakia = 4;
+	}
+
 };
 
 var resetRakiyaPosition = function () {
-
+	rakiya.x = 32 + (Math.random() * (canvas.width - 90));
+	rakiya.y = 32 + (Math.random() * (canvas.height - 90));
 }
 
 
@@ -106,12 +126,10 @@ var update = function (modifier) {
 		}
 	}
 
-	// rakia
+	// Throw new rakiya
 
-	if (beersToDrink % 4 == 0){
-		rakiyaReady = true;
-	} else{
-		rakiyaReady = false;
+	if (beersToRakia == 0){
+		throwRakiya = true;
 	}
 
 	// Are they touching?
@@ -122,23 +140,30 @@ var update = function (modifier) {
 		&& beer.y <= (nakov.y + 65)
 	) {
 		--beersToDrink;
+		beersToRakia--;
+		nakov.speed -= 10;
 		resetBeerPosition();
-	} else if (nakov.x <= (rakiya.x + 10)
+	}  if (
+		nakov.x <= (rakiya.x + 10)
 		&& rakiya.x <= (nakov.x + 46)
 		&& nakov.y <= (rakiya.y + 58)
 		&& rakiya.y <= (nakov.y + 65)
+		&& throwRakiya == true
+		&& rakiyaTimeOut > 0
 	) {
-		beersToDrink -=4;
-		resetBeerPosition();
+		beersToDrink -= 3;
+		beersToRakia = 4;
+		throwRakiya = false;
+		resetRakiyaPosition();
 	}
 
-
-	if (beersToDrink == 0){
-		reset();
-		nakov.speed -= 50;
+	// Next Level
+	if (beersToDrink < 1){
 		remainingTime = 30;
-		beersToDrink = 15;
+		beersToDrink = 20;
 		level++;
+		nakov.speed = 256;
+		reset();
 	}
 };
 
@@ -156,8 +181,8 @@ var render = function () {
 		ctx.drawImage(beerImage, beer.x, beer.y);
 	}
 
-	if (rakiyaReady){
-		ctx.drawImage(rakiyaImage, 200, 300);
+	if (throwRakiya && rakiyaReady && rakiyaTimeOut > 0){
+		ctx.drawImage(rakiyaImage, rakiya.x, rakiya.y);
 	}
 
 	// Score Level Time
@@ -166,6 +191,8 @@ var render = function () {
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
 	ctx.fillText("Beers to drink: " + beersToDrink , 12, 12);
+	//ctx.fillText("Beers to rakiq: " + beersToRakia , 12, 32);
+	//ctx.fillText("Rakia timeout " + rakiyaTimeOut , 12, 70);
 	ctx.fillText("Time Left: " + remainingTime, 460,12);
 	ctx.fillText("Level: " + level, 12, 430);
 
@@ -179,6 +206,7 @@ var render = function () {
 function countDown() {
 	if (remainingTime > 0) {
 		remainingTime--;
+		rakiyaTimeOut--;
 	}
 }
 setInterval(countDown,1000);
