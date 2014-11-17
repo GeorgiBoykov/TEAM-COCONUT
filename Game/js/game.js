@@ -4,6 +4,7 @@ var ctx = canvas.getContext("2d");
 canvas.width = 679;
 canvas.height = 480;
 canvas.style.border = "2px solid black";
+var textColor = "#000033";
 document.body.appendChild(canvas);
 
 var remainingTime = 30;
@@ -53,9 +54,8 @@ var nakov = {
 
 var rakiya = {};
 var beer = {};
-var beersToDrink = 20;
+var beersDrunk = 0;
 var beersToRakia = 4;
-var level = 1;
 
 // Handle keyboard controls
 var keysDown = {};
@@ -88,11 +88,11 @@ var resetBeerPosition = function () {
 	beer.y = 32 + (Math.random() * (canvas.height - 80));
 
 	if (beersToRakia == 0){
-	    rakiyaTimeOut = 3;
+		rakiyaTimeOut = 3;
 		resetRakiyaPosition();
 	}
 	if (beersToRakia < 0){
-	    beersToRakia = 4;
+		beersToRakia = 4;
 	}
 
 };
@@ -105,24 +105,49 @@ var resetRakiyaPosition = function () {
 
 // Update game objects
 var update = function (modifier) {
-	if (38 in keysDown) { // Player holding up
-		if (nakov.y > 0){
-			nakov.y -= nakov.speed * modifier;
+	if (beersDrunk < 30) {							// Reverse controls after 30 beers drunk
+
+		if (38 in keysDown) { // Player holding up
+			if (nakov.y > 0) {
+				nakov.y -= nakov.speed * modifier;
+			}
+		}
+		if (40 in keysDown) { // Player holding down
+			if (nakov.y < canvas.height - 77) {
+				nakov.y += nakov.speed * modifier;
+			}
+		}
+		if (37 in keysDown) { // Player holding left
+			if (nakov.x > 0) {
+				nakov.x -= nakov.speed * modifier;
+			}
+		}
+		if (39 in keysDown) { // Player holding right
+			if (nakov.x < canvas.width - 50) {
+				nakov.x += nakov.speed * modifier;
+			}
 		}
 	}
-	if (40 in keysDown) { // Player holding down
-		if (nakov.y < canvas.height - 77){
-			nakov.y += nakov.speed * modifier;
+	else{
+		if (38 in keysDown) { // Player holding up
+			if (nakov.y > 0){
+				nakov.y -= nakov.speed * modifier;
+			}
 		}
-	}
-	if (37 in keysDown) { // Player holding left
-		if (nakov.x > 0){
-			nakov.x -= nakov.speed * modifier;
+		if (40 in keysDown) { // Player holding down
+			if (nakov.y < canvas.height - 77){
+				nakov.y += nakov.speed * modifier;
+			}
 		}
-	}
-	if (39 in keysDown) { // Player holding right
-		if (nakov.x < canvas.width - 50){
-			nakov.x += nakov.speed * modifier;
+		if (39 in keysDown) { // Player holding left
+			if (nakov.x > 0){
+				nakov.x -= nakov.speed * modifier;
+			}
+		}
+		if (37 in keysDown) { // Player holding right
+			if (nakov.x < canvas.width - 50){
+				nakov.x += nakov.speed * modifier;
+			}
 		}
 	}
 
@@ -139,7 +164,7 @@ var update = function (modifier) {
 		&& nakov.y <= (beer.y + 58)
 		&& beer.y <= (nakov.y + 65)
 	) {
-		--beersToDrink;
+		++beersDrunk;
 		beersToRakia--;
 		nakov.speed -= 10;
 		resetBeerPosition();
@@ -151,20 +176,15 @@ var update = function (modifier) {
 		&& throwRakiya == true
 		&& rakiyaTimeOut > 0
 	) {
-		beersToDrink -= 3;
 		beersToRakia = 4;
+		nakov.speed = 256;
 		throwRakiya = false;
+		remainingTime += 5;
+		textColor = "red";
 		resetRakiyaPosition();
 	}
 
-	// Next Level
-	if (beersToDrink < 1){
-		remainingTime = 30;
-		beersToDrink = 20;
-		level++;
-		nakov.speed = 256;
-		reset();
-	}
+
 };
 
 // Draw everything
@@ -185,16 +205,14 @@ var render = function () {
 		ctx.drawImage(rakiyaImage, rakiya.x, rakiya.y);
 	}
 
-	// Score Level Time
-	ctx.fillStyle = "#000033";
+	ctx.fillStyle = textColor;		//"#000033";
 	ctx.font = "bold 30px Helvetica";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
-	ctx.fillText("Beers to drink: " + beersToDrink , 12, 12);
+	ctx.fillText("Beers drunk: " + beersDrunk , 12, 12);
 	//ctx.fillText("Beers to rakiq: " + beersToRakia , 12, 32);
 	//ctx.fillText("Rakia timeout " + rakiyaTimeOut , 12, 70);
 	ctx.fillText("Time Left: " + remainingTime, 460,12);
-	ctx.fillText("Level: " + level, 12, 430);
 
 	// Death Check
 	if (remainingTime == 0){
@@ -207,6 +225,7 @@ function countDown() {
 	if (remainingTime > 0) {
 		remainingTime--;
 		rakiyaTimeOut--;
+		textColor = "#000033";
 	}
 }
 setInterval(countDown,1000);
