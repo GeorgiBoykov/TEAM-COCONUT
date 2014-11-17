@@ -126,11 +126,7 @@ var update = function (modifier) {
 		}
 	}
 
-<<<<<<< HEAD
 	// Throw new rakiya
-=======
-	// rakiya
->>>>>>> origin/master
 
 	if (beersToRakia == 0){
 		throwRakiya = true;
@@ -147,14 +143,9 @@ var update = function (modifier) {
 		beersToRakia--;
 		nakov.speed -= 10;
 		resetBeerPosition();
-<<<<<<< HEAD
 	}  if (
 		nakov.x <= (rakiya.x + 10)
 		&& rakiya.x <= (nakov.x + 46)
-=======
-	} else if (nakov.x <= (rakiya.x + 10)
-		&& rakiya.x <= (nakov.x + 10)
->>>>>>> origin/master
 		&& nakov.y <= (rakiya.y + 58)
 		&& rakiya.y <= (nakov.y + 65)
 		&& throwRakiya == true
