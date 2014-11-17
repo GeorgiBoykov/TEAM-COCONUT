@@ -22,6 +22,7 @@ bgImage.src = "images/Wood-Background.jpg";
 // nakov image
 var nakovReady = false;
 var nakovImage = new Image();
+
 nakovImage.onload = function () {
 	nakovReady = true;
 };
@@ -35,10 +36,17 @@ beerImage.onload = function () {
 };
 beerImage.src = "images/beer.png";
 
+//rakiya image
+var rakiyaReady = false;
+var rakiyaImage = new Image();
+rakiyaImage.src = "images/rakiya.png";
+
 // Game objects
 var nakov = {
 	speed: 256 // movement in pixels per second
 };
+
+var rakiya = {};
 var beer = {};
 var beersToDrink = 10;
 var level = 1;
@@ -70,6 +78,9 @@ var resetBeerPosition = function () {
 	beer.y = 32 + (Math.random() * (canvas.height - 80));
 };
 
+var resetRakiyaPosition = function () {
+
+}
 
 
 // Update game objects
@@ -95,6 +106,14 @@ var update = function (modifier) {
 		}
 	}
 
+	// rakia
+
+	if (beersToDrink % 4 == 0){
+		rakiyaReady = true;
+	} else{
+		rakiyaReady = false;
+	}
+
 	// Are they touching?
 	if (
 		nakov.x <= (beer.x + 52)
@@ -103,6 +122,13 @@ var update = function (modifier) {
 		&& beer.y <= (nakov.y + 65)
 	) {
 		--beersToDrink;
+		resetBeerPosition();
+	} else if (nakov.x <= (rakiya.x + 10)
+		&& rakiya.x <= (nakov.x + 46)
+		&& nakov.y <= (rakiya.y + 58)
+		&& rakiya.y <= (nakov.y + 65)
+	) {
+		beersToDrink -=4;
 		resetBeerPosition();
 	}
 
@@ -128,6 +154,10 @@ var render = function () {
 
 	if (beerReady) {
 		ctx.drawImage(beerImage, beer.x, beer.y);
+	}
+
+	if (rakiyaReady){
+		ctx.drawImage(rakiyaImage, 200, 300);
 	}
 
 	// Score Level Time
