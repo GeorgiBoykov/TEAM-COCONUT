@@ -1,17 +1,19 @@
 // Create the canvas
-var canvas = document.createElement("canvas");
+var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 canvas.width = 679;
 canvas.height = 480;
 canvas.style.border = "2px solid black";
 var textColor = "#000033";
-var plus5 =  false;
-document.body.appendChild(canvas);
+var plus5 = false;
 
-canvas.style.margin = "7% 0 0 4%";
+canvas.style.margin = "5% 0 0 4.5%";
 
 var remainingTime = 30;
 var rakiyaTimeOut;
+
+var running = true;
+var btnPause = document.getElementById("btnPause");
 
 // Background image
 var bgReady = false;
@@ -118,84 +120,88 @@ var resetRakiyaPosition = function () {
 // Update game objects
 var update = function (modifier) {
 
-	if (beersDrunk < 30) {							// Reverse controls after 30 beers drunk
+	if (running) {
 
-		if (38 in keysDown) { // Player holding up
-			if (nakov.y > 0) {
-				nakov.y -= nakov.speed * modifier;
-			}
-		}
-		if (40 in keysDown) { // Player holding down
-			if (nakov.y < canvas.height - 77) {
-				nakov.y += nakov.speed * modifier;
-			}
-		}
-		if (37 in keysDown) { // Player holding left
-			if (nakov.x > 0) {
-				nakov.x -= nakov.speed * modifier;
-			}
-		}
-		if (39 in keysDown) { // Player holding right
-			if (nakov.x < canvas.width - 50) {
-				nakov.x += nakov.speed * modifier;
-			}
-		}
-	}
-	else{
-		if (38 in keysDown) { // Player holding up
-			if (nakov.y > 0){
-				nakov.y -= nakov.speed * modifier;
-			}
-		}
-		if (40 in keysDown) { // Player holding down
-			if (nakov.y < canvas.height - 77){
-				nakov.y += nakov.speed * modifier;
-			}
-		}
-		if (39 in keysDown) { // Player holding left
-			if (nakov.x > 0){
-				nakov.x -= nakov.speed * modifier;
-			}
-		}
-		if (37 in keysDown) { // Player holding right
-			if (nakov.x < canvas.width - 50){
-				nakov.x += nakov.speed * modifier;
-			}
-		}
-	}
+		if (beersDrunk < 30) {							// Reverse controls after 30 beers drunk
 
-	// Throw new rakiya
+			if (38 in keysDown) { // Player holding up
+				if (nakov.y > 0) {
+					nakov.y -= nakov.speed * modifier;
+				}
+			}
+			if (40 in keysDown) { // Player holding down
+				if (nakov.y < canvas.height - 77) {
+					nakov.y += nakov.speed * modifier;
+				}
+			}
+			if (37 in keysDown) { // Player holding left
+				if (nakov.x > 0) {
+					nakov.x -= nakov.speed * modifier;
+				}
+			}
+			if (39 in keysDown) { // Player holding right
+				if (nakov.x < canvas.width - 50) {
+					nakov.x += nakov.speed * modifier;
+				}
+			}
+		}
+		else {
+			if (38 in keysDown) { // Player holding up
+				if (nakov.y > 0) {
+					nakov.y -= nakov.speed * modifier;
+				}
+			}
+			if (40 in keysDown) { // Player holding down
+				if (nakov.y < canvas.height - 77) {
+					nakov.y += nakov.speed * modifier;
+				}
+			}
+			if (39 in keysDown) { // Player holding left
+				if (nakov.x > 0) {
+					nakov.x -= nakov.speed * modifier;
+				}
+			}
+			if (37 in keysDown) { // Player holding right
+				if (nakov.x < canvas.width - 50) {
+					nakov.x += nakov.speed * modifier;
+				}
+			}
+		}
 
-	if (beersToRakia == 0){
-		throwRakiya = true;
-	}
+		// Throw new rakiya
 
-	// Are they touching?
-	if (
-		nakov.x <= (beer.x + 52)
-		&& beer.x <= (nakov.x + 46)
-		&& nakov.y <= (beer.y + 58)
-		&& beer.y <= (nakov.y + 65)
-	) {
-		++beersDrunk;
-		beersToRakia--;
-		nakov.speed -= 10;
-		resetBeerPosition();
-	}  if (
-		nakov.x <= (rakiya.x + 10)
-		&& rakiya.x <= (nakov.x + 46)
-		&& nakov.y <= (rakiya.y + 58)
-		&& rakiya.y <= (nakov.y + 65)
-		&& throwRakiya == true
-		&& rakiyaTimeOut > 0
-	) {
-		beersToRakia = 4;
-		nakov.speed = 256;
-		throwRakiya = false;
-		remainingTime += 5;
-		textColor = '#f30000';
-		plus5 = true;
-		resetRakiyaPosition();
+		if (beersToRakia == 0) {
+			throwRakiya = true;
+		}
+
+		// Are they touching?
+		if (
+			nakov.x <= (beer.x + 52)
+			&& beer.x <= (nakov.x + 46)
+			&& nakov.y <= (beer.y + 58)
+			&& beer.y <= (nakov.y + 65)
+		) {
+			++beersDrunk;
+			beersToRakia--;
+			nakov.speed -= 10;
+			resetBeerPosition();
+		}
+		if (
+			nakov.x <= (rakiya.x + 10)
+			&& rakiya.x <= (nakov.x + 46)
+			&& nakov.y <= (rakiya.y + 58)
+			&& rakiya.y <= (nakov.y + 65)
+			&& throwRakiya == true
+			&& rakiyaTimeOut > 0
+		) {
+			beersToRakia = 4;
+			nakov.speed = 256;
+			throwRakiya = false;
+			remainingTime += 5;
+			textColor = '#f30000';
+			plus5 = true;
+			resetRakiyaPosition();
+		}
 	}
 };
 
@@ -273,8 +279,8 @@ var render = function () {
 	//ctx.fillText("Beers to rakiq: " + beersToRakia , 12, 32);
 	//ctx.fillText("Rakia timeout " + rakiyaTimeOut , 12, 70);
 	ctx.fillText("Time Left: " + remainingTime, 460,12);
-	
-	if(plus5 == true){	
+
+	if(plus5 == true){
     	ctx.fillText("+ 5 sec" , 460, 45);
     	}
 
@@ -289,14 +295,26 @@ var render = function () {
 };
 
 function countDown() {
-	if (remainingTime > 0) {
-		remainingTime--;
-		rakiyaTimeOut--;
-		textColor = "#000033";
-		plus5 = false;
+	if (running){
+		if (remainingTime > 0) {
+			remainingTime--;
+			rakiyaTimeOut--;
+			textColor = "#000033";
+			plus5 = false;
+		}
 	}
+
 }
 setInterval(countDown,1000);
+
+//Pause
+btnPause.addEventListener("click", function(){
+	if (running){
+	    running = false;
+	} else{
+		running = true;
+	}
+});
 
 // The main game loop
 var main = function () {
