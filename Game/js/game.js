@@ -7,6 +7,8 @@ canvas.style.border = "2px solid black";
 var textColor = "#000033";
 document.body.appendChild(canvas);
 
+canvas.style.margin = "7% 0 0 4%";
+
 var remainingTime = 30;
 var rakiyaTimeOut;
 
@@ -20,6 +22,15 @@ bgImage.onload = function () {
 	bgReady = true;
 };
 bgImage.src = "images/Wood-Background.jpg";
+
+//drunk-meter
+var drunkReady = false;
+var drunkImage = new Image();
+drunkImage.src = "images/drunk-o-meter.png";
+
+drunkImage.onload = function(){
+	drunkReady = true;
+}
 
 // nakov image
 var nakovReady = false;
@@ -204,6 +215,18 @@ var render = function () {
 	if (throwRakiya && rakiyaReady && rakiyaTimeOut > 0){
 		ctx.drawImage(rakiyaImage, rakiya.x, rakiya.y);
 	}
+
+	if (drunkReady){
+	    ctx.drawImage(drunkImage, 10, 390);
+	}
+
+	ctx.beginPath();
+	ctx.strokeStyle = "#006bb2";
+	ctx.lineWidth = 4;
+	ctx.moveTo(35, 445);
+	ctx.lineTo(70, 445);
+	ctx.stroke();
+	ctx.fill();
 
 	ctx.fillStyle = textColor;		//"#000033";
 	ctx.font = "bold 30px Helvetica";
