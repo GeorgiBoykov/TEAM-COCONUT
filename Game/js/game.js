@@ -13,9 +13,6 @@ canvas.style.margin = "7% 0 0 4%";
 var remainingTime = 30;
 var rakiyaTimeOut;
 
-var arrowX = 35;
-var arrowY = 445;
-
 // Background image
 var bgReady = false;
 var bgImage = new Image();
@@ -203,6 +200,48 @@ var update = function (modifier) {
 
 };
 
+//draw arrow
+var arrow = function(){
+	ctx.beginPath();
+	ctx.strokeStyle = "#006bb2";
+	ctx.lineWidth = 4;
+
+	if (beersDrunk < 3){
+		ctx.moveTo(35, 445);
+	} else if (beersDrunk >= 3 && beersDrunk < 6) {
+		ctx.moveTo(37, 435);
+	} else if (beersDrunk >= 6 && beersDrunk < 8){
+		ctx.moveTo(43, 427);
+	} else if (beersDrunk >= 8 && beersDrunk < 10){
+		ctx.moveTo(48, 420);
+	} else if (beersDrunk >= 10 && beersDrunk < 12){
+		ctx.moveTo(53, 417);
+	} else if (beersDrunk >= 12 && beersDrunk < 14){
+		ctx.moveTo(63, 414);
+	} else if (beersDrunk >= 14 && beersDrunk < 17){
+		ctx.moveTo(69, 411);
+	} else if (beersDrunk >= 17 && beersDrunk < 20){
+		ctx.moveTo(77, 414);
+	} else if (beersDrunk >= 20 && beersDrunk < 23){
+		ctx.moveTo(87, 417);
+	} else if (beersDrunk >= 23 && beersDrunk < 25){
+		ctx.moveTo(94, 421);
+	} else if (beersDrunk >= 25 && beersDrunk < 28){
+		ctx.moveTo(99, 427);
+	} else if (beersDrunk >= 28 && beersDrunk < 30){
+		ctx.moveTo(105, 435);
+	} else {
+		ctx.moveTo(107, 445);
+	}
+
+	ctx.lineTo(70, 445);
+	ctx.stroke();
+	ctx.fill();
+
+
+
+}
+
 // Draw everything
 var render = function () {
 	if (bgReady) {
@@ -225,13 +264,7 @@ var render = function () {
 	    ctx.drawImage(drunkImage, 10, 390);
 	}
 
-	ctx.beginPath();
-	ctx.strokeStyle = "#006bb2";
-	ctx.lineWidth = 4;
-	ctx.moveTo(arrowX, arrowY);
-	ctx.lineTo(70, 445);
-	ctx.stroke();
-	ctx.fill();
+	arrow();
 
 	ctx.fillStyle = textColor;		//"#000033";
 	ctx.font = "bold 30px Helvetica";
