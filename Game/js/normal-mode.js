@@ -31,7 +31,7 @@ drunkImage.src = "images/drunk-o-meter.png";
 
 drunkImage.onload = function(){
 	drunkReady = true;
-}
+};
 
 // nakov image
 var nakovReady = false;
@@ -112,7 +112,7 @@ var resetBeerPosition = function () {
 var resetRakiyaPosition = function () {
 	rakiya.x = 32 + (Math.random() * (canvas.width - 90));
 	rakiya.y = 32 + (Math.random() * (canvas.height - 90));
-}
+};
 
 
 // Update game objects
@@ -237,10 +237,7 @@ var arrow = function(){
 	ctx.lineTo(70, 445);
 	ctx.stroke();
 	ctx.fill();
-
-
-
-}
+};
 
 // Draw everything
 var render = function () {
