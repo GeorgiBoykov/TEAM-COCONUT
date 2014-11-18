@@ -25,7 +25,7 @@ bgImage.onload = function () {
 bgImage.src = "images/Wood-Background.jpg";
 
 //back-button
-document.write('<div class="btn"><a href="game mode.html">Go Back</a></div>');
+document.write('<div class="controls"><div class="back"><a href="index.html">GO BACK</a></div><div class="pause"><a href="#">PAUSE<a/></div><div class="restart"><a href="#">RESTART</a></div>');
 
 //drunk-meter
 var drunkReady = false;
