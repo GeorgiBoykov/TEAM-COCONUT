@@ -1,9 +1,9 @@
-﻿- (done) Нива сменящи се след даден брой бири - определена бройка бири за определено време;
-- Бирата да изчезва след 3? секунди; - НЕ
-- (done) Движението да се забавя след всяко ниво;
-- Drunk meter - измерва колко си пиян спрямо изпитите бири във вид на термометър;
-- Да се появяват две бири на всеки пет;
-- (done) До изпитите бири да стоят необходимите за нивото;
-- Старт меню за пускане на играта и името на играта;
+﻿- (done)Count down clock;
+- (done)Bonus - Rakiya on every 5 beers: Extra time and speed;
+- (done)Rakiya disappear after 3 seconds;
+- (done)Movement slow down after every beer/ level;
+- (done)Drunk meter - how drunk Nakov is meter;
+- (done)Start menu with info, controls, team etc.;
+- (eliminated) Levels changing on certain number of beers;
 - HighScore !?!!
-- Мелодия фон и мелодия при хващане на бира;
+- Background melody and on beer/ rakiya grab;
