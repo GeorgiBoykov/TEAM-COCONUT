@@ -237,10 +237,10 @@ var render = function () {
 	ctx.fillText("Beers drunk: " + beersDrunk , 12, 12);
 	//ctx.fillText("Beers to rakiq: " + beersToRakia , 12, 32);
 	//ctx.fillText("Rakia timeout " + rakiyaTimeOut , 12, 70);
-	ctx.fillText("Time Left: " + remainingTime, 450,12);
+	ctx.fillText("Time Left: " + remainingTime, 460,12);
 	
 	if(plus5 == true){	
-    	ctx.fillText("+ 5 sec" , 600,45);
+    	ctx.fillText("+ 5 sec" , 450, 45);
     	}
 
 	// Death Check
