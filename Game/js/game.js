@@ -10,7 +10,7 @@ document.body.appendChild(canvas);
 
 canvas.style.margin = "7% 0 0 4%";
 
-var remainingTime = 10;
+var remainingTime = 30;
 var rakiyaTimeOut;
 
 // Background image
