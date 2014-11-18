@@ -200,8 +200,6 @@ var update = function (modifier) {
 		plus5 = true;
 		resetRakiyaPosition();
 	}
-
-
 };
 
 //draw arrow
@@ -263,9 +261,7 @@ var render = function () {
 	}
 
 	if (drunkReady){
-		ctx.globalAlpha = 0.6;
 	    ctx.drawImage(drunkImage, 10, 390);
-		ctx.globalAlpha = 1;
 	}
 
 	arrow();
