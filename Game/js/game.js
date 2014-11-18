@@ -5,6 +5,7 @@ canvas.width = 679;
 canvas.height = 480;
 canvas.style.border = "2px solid black";
 var textColor = "#000033";
+var plus5 =  false;
 document.body.appendChild(canvas);
 
 canvas.style.margin = "7% 0 0 4%";
@@ -192,6 +193,7 @@ var update = function (modifier) {
 		throwRakiya = false;
 		remainingTime += 5;
 		textColor = "red";
+		plus5 = true;
 		resetRakiyaPosition();
 	}
 
@@ -235,7 +237,11 @@ var render = function () {
 	ctx.fillText("Beers drunk: " + beersDrunk , 12, 12);
 	//ctx.fillText("Beers to rakiq: " + beersToRakia , 12, 32);
 	//ctx.fillText("Rakia timeout " + rakiyaTimeOut , 12, 70);
-	ctx.fillText("Time Left: " + remainingTime, 460,12);
+	ctx.fillText("Time Left: " + remainingTime, 450,12);
+	
+	if(plus5 == true){	
+    	ctx.fillText("+ 5 sec" , 600,45);
+    	}
 
 	// Death Check
 	if (remainingTime == 0){
@@ -249,6 +255,7 @@ function countDown() {
 		remainingTime--;
 		rakiyaTimeOut--;
 		textColor = "#000033";
+		plus5 = false;
 	}
 }
 setInterval(countDown,1000);
