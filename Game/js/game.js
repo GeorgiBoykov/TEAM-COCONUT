@@ -240,7 +240,7 @@ var render = function () {
 	ctx.fillText("Time Left: " + remainingTime, 460,12);
 	
 	if(plus5 == true){	
-    	ctx.fillText("+ 5 sec" , 450, 45);
+    	ctx.fillText("+ 5 sec" , 460, 45);
     	}
 
 	// Death Check
