@@ -10,7 +10,7 @@ document.body.appendChild(canvas);
 
 canvas.style.margin = "7% 0 0 4%";
 
-var remainingTime = 30;
+var remainingTime = 10;
 var rakiyaTimeOut;
 
 // Background image
@@ -281,6 +281,9 @@ var render = function () {
 	// Death Check
 	if (remainingTime == 0){
 		ctx.drawImage(gameOverImg, 0, 0);
+		ctx.fillStyle = '#f30000';
+		ctx.fillText("TOTAL BEERS DRUNK: " + beersDrunk, 155,420);
+
 		cancelRequestAnimationFrame(1);
 	}
 };
