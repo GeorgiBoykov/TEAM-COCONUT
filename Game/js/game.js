@@ -120,6 +120,7 @@ var resetRakiyaPosition = function () {
 
 // Update game objects
 var update = function (modifier) {
+
 	if (beersDrunk < 30) {							// Reverse controls after 30 beers drunk
 
 		if (38 in keysDown) { // Player holding up
@@ -195,7 +196,7 @@ var update = function (modifier) {
 		nakov.speed = 256;
 		throwRakiya = false;
 		remainingTime += 5;
-		textColor = "red";
+		textColor = '#f30000';
 		plus5 = true;
 		resetRakiyaPosition();
 	}
@@ -244,6 +245,7 @@ var arrow = function(){
 
 // Draw everything
 var render = function () {
+
 	if (bgReady) {
 		ctx.drawImage(bgImage, 0, 0);
 	}
