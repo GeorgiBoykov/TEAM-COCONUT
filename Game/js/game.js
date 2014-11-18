@@ -13,6 +13,9 @@ canvas.style.margin = "7% 0 0 4%";
 var remainingTime = 30;
 var rakiyaTimeOut;
 
+var arrowX = 35;
+var arrowY = 445;
+
 // Background image
 var bgReady = false;
 var bgImage = new Image();
@@ -225,7 +228,7 @@ var render = function () {
 	ctx.beginPath();
 	ctx.strokeStyle = "#006bb2";
 	ctx.lineWidth = 4;
-	ctx.moveTo(35, 445);
+	ctx.moveTo(arrowX, arrowY);
 	ctx.lineTo(70, 445);
 	ctx.stroke();
 	ctx.fill();
