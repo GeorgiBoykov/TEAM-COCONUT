@@ -24,6 +24,9 @@ bgImage.onload = function () {
 };
 bgImage.src = "images/Wood-Background.jpg";
 
+//back-button
+document.write('<div class="btn"><a href="game mode.html">Go Back</a></div>');
+
 //drunk-meter
 var drunkReady = false;
 var drunkImage = new Image();
