@@ -1,3 +1,6 @@
 function HighScore(){
-    localStorage.setItem()
+    var storage;
+
+
+    //localStorage.setItem(score);
 }

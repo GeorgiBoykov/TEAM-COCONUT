@@ -7,7 +7,7 @@ canvas.style.border = "2px solid black";
 var textColor = "#000033";
 var plus5 = false;
 
-var remainingTime = 30;
+var remainingTime = 3;
 var rakiyaTimeOut;
 
 var isAlive = true;
@@ -313,6 +313,8 @@ var render = function () {
             ctx.fillText("TOTAL BEERS DRUNK: " + beersDrunk, 155, 420);
 
             isAlive = false;
+
+            highScore();
         }
     }
 };
@@ -328,6 +330,24 @@ function countDown() {
     }
 }
 setInterval(countDown, 1000);
+
+//High Score
+var highScore = function(){
+    var name;
+
+    if (localStorage.length == 0){
+        name = prompt("Enter your name: ");
+        localStorage.setItem("score", name, beersDrunk);
+    } else {
+        var currentBest = localStorage.getItem("score");
+
+        if (currentBest < beersDrunk){
+            name = prompt("Enter your name: ");
+            localStorage.setItem("score", beersDrunk);
+        }
+    }
+}
+
 
 //Pause
 btnPause.addEventListener("click", function () {
