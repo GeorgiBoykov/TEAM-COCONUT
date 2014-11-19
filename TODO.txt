@@ -4,6 +4,8 @@
 - (done)Movement slow down after every beer/ level;
 - (done)Drunk meter - how drunk Nakov is meter;
 - (done)Start menu with info, controls, team etc.;
+- (done)Pause button;
+- (done)Restart button;
 - (eliminated) Levels changing on certain number of beers;
 - HighScore !?!!
 - Background melody and on beer/ rakiya grab;
