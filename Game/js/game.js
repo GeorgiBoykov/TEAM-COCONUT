@@ -332,9 +332,9 @@ setInterval(countDown, 1000);
 //Pause
 btnPause.addEventListener("click", function () {
     if (running) {
-        running = false;
-    } else {
-        running = true;
+		running = false;
+	} else {
+		running = true;
     }
 });
 
