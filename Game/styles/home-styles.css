@@ -59,14 +59,16 @@ h2 {
     padding-right: 35px;
 }
 
+img {
+    width: 70%;
+}
 
 a {
     text-decoration: none;
     color: red;
 }
 
-#goBack
-{
+.back {
     margin: 0% 0px 0px 9%;
     max-width: 150px;
     display: inline-block;
