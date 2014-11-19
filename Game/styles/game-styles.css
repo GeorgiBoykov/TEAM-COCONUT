@@ -51,4 +51,5 @@ a {
     background-image: -o-linear-gradient(top, #000000, #7d6800);
     background-image: linear-gradient(to bottom, #000000, #7d6800);
     text-decoration: none;
+	cursor: pointer;
 }

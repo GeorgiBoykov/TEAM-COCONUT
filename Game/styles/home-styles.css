@@ -63,11 +63,6 @@ img {
     width: 70%;
 }
 
-a {
-    text-decoration: none;
-    color: red;
-}
-
 .back {
     margin: 0% 0px 0px 9%;
     max-width: 150px;
@@ -98,4 +93,5 @@ a {
     background-image: -o-linear-gradient(top, #000000, #7d6800);
     background-image: linear-gradient(to bottom, #000000, #7d6800);
     text-decoration: none;
+	cursor: pointer;
 }
