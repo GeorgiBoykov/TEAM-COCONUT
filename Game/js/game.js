@@ -199,13 +199,6 @@ var update = function (modifier) {
             }
         }
 
-        if (beersDrunk == 20){
-            burpEasy.play();
-        }
-        if (beersDrunk == 30){
-            burpHard.play();
-        }
-
         // Throw new rakiya
 
         if (beersToRakia == 0) {
@@ -223,6 +216,13 @@ var update = function (modifier) {
             beersToRakia--;
             nakov.speed -= 10;
             resetBeerPosition();
+            
+            if (beersDrunk == 20){      // play burp
+                burpEasy.play();
+            }
+            if (beersDrunk == 30){
+                burpHard.play();
+            }
         }
         if (
             nakov.x <= (rakiya.x + 10)
