@@ -387,6 +387,7 @@ btnRestart.addEventListener("click", function () {
     reset();
     isAlive = true;
     nakov.speed = 256;
+    beersToRakia = 4;
 });
 
 // The main game loop
