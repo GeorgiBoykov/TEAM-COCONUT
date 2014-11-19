@@ -5,111 +5,50 @@ body{
 }
 
 header{
-    margin-left: 15%;
-
+    margin-left: 18%;
+    margin-top: -2%;
 }
 
 header p{
     color: white;
-    font-family: papyrus, arial, sans-serif;
-    font-size: 95px;
+    font-family: papyrus, arial;
+    font-size: 50px;
     font-weight: bold;
 }
 
 header p::first-letter{
+    font-size: 70px;
+}
+
+p {
+    color: white;
+    font-family: papyrus, arial;
+    font-weight: bold;
     font-size: 30px;
-}
-
-nav{
-    margin-top: -1%;
-    margin-left: 15%;
-}
-
-nav ul{
-    list-style: none;
-}
-
-nav ul li{
-    margin-top: 1.5%;
-    width: 30%;
     text-align: center;
 }
 
-nav ul li a{
-    color: white;
-    text-decoration: none;
-    font-size: 38px;
-}
-
-nav ul li a:hover{
-    color: #fd9802;
-}
-
-h2 {
-    color: white;
-}
-
-.helpControls {
-    margin: 4% 0 0 7%;
-}
-
-.controlsHelp {
+article {
     display: inline-block;
-    text-align: center;
-    padding-right: 35px;
+    margin-left: 12%;
+}
+
+.header {
+    text-align: left;
+}
+
+section {
+    max-width: 700px;
+    margin-left: 12%;
 }
 
 
-a {
-    text-decoration: none;
-    color: red;
-}
-/* Team page styles*/
-.teamName{
-    color:white;
-    text-align: center;
-}
-.team{
-    float:left;
-    margin-left: 100px;
-    margin-top: -100px;
+img {
+    width: 250px;
+    height: 250px;
 }
 
-#name{
-    height:200px;
-    font-size: 25px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    margin-left: -100px;
-}
-#goBack{
-    margin-right: 4%;
-    max-width: 150px;
-    text-align: center;
-}
-
-h2 {
-    color: white;
-}
-
-.helpControls {
-    margin: 4% 0 0 7%;
-}
-
-.controlsHelp {
-    display: inline-block;
-    text-align: center;
-    padding-right: 35px;
-}
-
-
-
-a {
-    text-decoration: none;
-    color: red;
-}
-
-#goBack {
+.back {
     margin: 0% 0px 0px 9%;
     max-width: 150px;
     display: inline-block;
@@ -129,9 +68,9 @@ a {
     padding: 10px 20px 10px 20px;
     border: solid #ffffff 1px;
     text-decoration: none;
-    margin:10px 0px 0px -130px;
 }
-#goBack:hover{
+
+.back:hover {
     background: #000000;
     background-image: -webkit-linear-gradient(top, #000000, #7d6800);
     background-image: -moz-linear-gradient(top, #000000, #7d6800);
@@ -139,4 +78,5 @@ a {
     background-image: -o-linear-gradient(top, #000000, #7d6800);
     background-image: linear-gradient(to bottom, #000000, #7d6800);
     text-decoration: none;
+    cursor: pointer;
 }
