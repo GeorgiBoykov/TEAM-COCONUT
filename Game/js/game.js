@@ -61,6 +61,14 @@ rakiyaImage.onload = function () {
 };
 rakiyaImage.src = "images/rakiya.png";
 
+// pause image
+var pauseReady = false;
+var pauseImage = new Image();
+pauseImage.onload = function () {
+    pauseReady = true;
+};
+pauseImage.src = "images/pause.png";
+
 // Game objects
 var nakov = {
     speed: 256 // movement in pixels per second
@@ -267,44 +275,57 @@ var arrow = function () {
 // Draw everything
 var render = function () {
 
-    if (isAlive) {
+    if (isAlive) {      //if nakov is alive
 
-        if (bgReady) {
-            ctx.drawImage(bgImage, 0, 0);
+        if (running) {      // if pause is not clicked
+
+            if (bgReady) {
+                ctx.drawImage(bgImage, 0, 0);
+            }
+
+            if (nakovReady) {
+                ctx.drawImage(nakovImage, nakov.x, nakov.y);
+            }
+
+            if (beerReady) {
+                ctx.drawImage(beerImage, beer.x, beer.y);
+
+            }
+
+            if (throwRakiya && rakiyaReady && rakiyaTimeOut > 0) {
+                ctx.drawImage(rakiyaImage, rakiya.x, rakiya.y);
+            }
+
+            if (drunkReady) {
+                ctx.globalAlpha = 0.6;
+                ctx.drawImage(drunkImage, 10, 390);
+                ctx.globalAlpha = 1;
+            }
+
+
+            arrow();
+
+            ctx.fillStyle = textColor;		//"#000033";
+            ctx.font = "bold 30px Helvetica";
+            ctx.textAlign = "left";
+            ctx.textBaseline = "top";
+            ctx.fillText("Beers drunk: " + beersDrunk, 12, 12);
+            //ctx.fillText("Beers to rakiq: " + beersToRakia , 12, 32);
+            //ctx.fillText("Rakia timeout " + rakiyaTimeOut , 12, 70);
+            ctx.fillText("Time Left: " + remainingTime, 460, 12);
+
+            if (plus5 == true) {
+                ctx.fillText("+ 5 sec", 460, 45);
+
+            }
         }
 
-        if (nakovReady) {
-            ctx.drawImage(nakovImage, nakov.x, nakov.y);
+        else {
+             if (pauseReady){                           // if pause is clicked
+                 ctx.drawImage(pauseImage, 290,180);
+             }
         }
 
-        if (beerReady) {
-            ctx.drawImage(beerImage, beer.x, beer.y);
-        }
-
-        if (throwRakiya && rakiyaReady && rakiyaTimeOut > 0) {
-            ctx.drawImage(rakiyaImage, rakiya.x, rakiya.y);
-        }
-
-        if (drunkReady) {
-            ctx.globalAlpha = 0.6;
-            ctx.drawImage(drunkImage, 10, 390);
-            ctx.globalAlpha = 1;
-        }
-
-        arrow();
-
-        ctx.fillStyle = textColor;		//"#000033";
-        ctx.font = "bold 30px Helvetica";
-        ctx.textAlign = "left";
-        ctx.textBaseline = "top";
-        ctx.fillText("Beers drunk: " + beersDrunk, 12, 12);
-        //ctx.fillText("Beers to rakiq: " + beersToRakia , 12, 32);
-        //ctx.fillText("Rakia timeout " + rakiyaTimeOut , 12, 70);
-        ctx.fillText("Time Left: " + remainingTime, 460, 12);
-
-        if (plus5 == true) {
-            ctx.fillText("+ 5 sec", 460, 45);
-        }
 
         // Death Check
         if (remainingTime == 0) {
@@ -352,8 +373,8 @@ var highScore = function(){
 //Pause
 btnPause.addEventListener("click", function () {
     if (running) {
-		running = false;
-	} else {
+        running = false;
+    } else {
 		running = true;
     }
 });
