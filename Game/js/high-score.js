@@ -1,0 +1,3 @@
+function HighScore(){
+    localStorage.setItem()
+}

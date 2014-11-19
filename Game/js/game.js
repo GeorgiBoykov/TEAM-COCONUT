@@ -7,10 +7,10 @@ canvas.style.border = "2px solid black";
 var textColor = "#000033";
 var plus5 = false;
 
-
 var remainingTime = 30;
 var rakiyaTimeOut;
 
+var isAlive = true;
 var running = true;
 var btnPause = document.getElementById("btnPause");
 var btnRestart = document.getElementById("btnRestart");
@@ -267,50 +267,53 @@ var arrow = function () {
 // Draw everything
 var render = function () {
 
-    if (bgReady) {
-        ctx.drawImage(bgImage, 0, 0);
-    }
+    if (isAlive) {
 
-    if (nakovReady) {
-        ctx.drawImage(nakovImage, nakov.x, nakov.y);
-    }
+        if (bgReady) {
+            ctx.drawImage(bgImage, 0, 0);
+        }
 
-    if (beerReady) {
-        ctx.drawImage(beerImage, beer.x, beer.y);
-    }
+        if (nakovReady) {
+            ctx.drawImage(nakovImage, nakov.x, nakov.y);
+        }
 
-    if (throwRakiya && rakiyaReady && rakiyaTimeOut > 0) {
-        ctx.drawImage(rakiyaImage, rakiya.x, rakiya.y);
-    }
+        if (beerReady) {
+            ctx.drawImage(beerImage, beer.x, beer.y);
+        }
 
-    if (drunkReady) {
-        ctx.globalAlpha = 0.6;
-        ctx.drawImage(drunkImage, 10, 390);
-        ctx.globalAlpha = 1;
-    }
+        if (throwRakiya && rakiyaReady && rakiyaTimeOut > 0) {
+            ctx.drawImage(rakiyaImage, rakiya.x, rakiya.y);
+        }
 
-    arrow();
+        if (drunkReady) {
+            ctx.globalAlpha = 0.6;
+            ctx.drawImage(drunkImage, 10, 390);
+            ctx.globalAlpha = 1;
+        }
 
-    ctx.fillStyle = textColor;		//"#000033";
-    ctx.font = "bold 30px Helvetica";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";
-    ctx.fillText("Beers drunk: " + beersDrunk, 12, 12);
-    //ctx.fillText("Beers to rakiq: " + beersToRakia , 12, 32);
-    //ctx.fillText("Rakia timeout " + rakiyaTimeOut , 12, 70);
-    ctx.fillText("Time Left: " + remainingTime, 460, 12);
+        arrow();
 
-    if (plus5 == true) {
-        ctx.fillText("+ 5 sec", 460, 45);
-    }
+        ctx.fillStyle = textColor;		//"#000033";
+        ctx.font = "bold 30px Helvetica";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "top";
+        ctx.fillText("Beers drunk: " + beersDrunk, 12, 12);
+        //ctx.fillText("Beers to rakiq: " + beersToRakia , 12, 32);
+        //ctx.fillText("Rakia timeout " + rakiyaTimeOut , 12, 70);
+        ctx.fillText("Time Left: " + remainingTime, 460, 12);
 
-    // Death Check
-    if (remainingTime == 0) {
-        ctx.drawImage(gameOverImg, 0, 0);
-        ctx.fillStyle = '#f30000';
-        ctx.fillText("TOTAL BEERS DRUNK: " + beersDrunk, 155, 420);
+        if (plus5 == true) {
+            ctx.fillText("+ 5 sec", 460, 45);
+        }
 
-        cancelRequestAnimationFrame(1);
+        // Death Check
+        if (remainingTime == 0) {
+            ctx.drawImage(gameOverImg, 0, 0);
+            ctx.fillStyle = '#f30000';
+            ctx.fillText("TOTAL BEERS DRUNK: " + beersDrunk, 155, 420);
+
+            isAlive = false;
+        }
     }
 };
 
@@ -323,7 +326,6 @@ function countDown() {
             plus5 = false;
         }
     }
-
 }
 setInterval(countDown, 1000);
 
@@ -342,8 +344,8 @@ btnRestart.addEventListener("click", function () {
     beersDrunk = 0;
     running = true;
     reset();
+    isAlive = true;
 });
-
 
 // The main game loop
 var main = function () {
