@@ -386,6 +386,7 @@ btnRestart.addEventListener("click", function () {
     running = true;
     reset();
     isAlive = true;
+    nakov.speed = 256;
 });
 
 // The main game loop
