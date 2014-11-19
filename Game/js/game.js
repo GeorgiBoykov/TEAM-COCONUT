@@ -14,6 +14,9 @@ var isAlive = true;
 var running = true;
 var btnPause = document.getElementById("btnPause");
 var btnRestart = document.getElementById("btnRestart");
+var burpEasy = document.getElementById("burpEasy");
+var burpHard = document.getElementById("burpHard");
+
 
 // Background image
 var bgReady = false;
@@ -194,6 +197,13 @@ var update = function (modifier) {
                     nakov.x += nakov.speed * modifier;
                 }
             }
+        }
+
+        if (beersDrunk == 20){
+            burpEasy.play();
+        }
+        if (beersDrunk == 30){
+            burpHard.play();
         }
 
         // Throw new rakiya
