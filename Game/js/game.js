@@ -7,7 +7,7 @@ canvas.style.border = "2px solid black";
 var textColor = "#000033";
 var plus5 = false;
 
-var remainingTime = 3;
+var remainingTime = 30;
 var rakiyaTimeOut;
 
 var isAlive = true;
