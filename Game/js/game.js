@@ -16,6 +16,9 @@ var btnPause = document.getElementById("btnPause");
 var btnRestart = document.getElementById("btnRestart");
 var burpEasy = document.getElementById("burpEasy");
 var burpHard = document.getElementById("burpHard");
+var soundPic = document.getElementById("sound");
+var btnMusic = document.getElementById("btnMusic");
+var music = true;
 
 
 // Background image
@@ -218,10 +221,15 @@ var update = function (modifier) {
             resetBeerPosition();
             
             if (beersDrunk == 20){      // play burp
-                burpEasy.play();
+                if (music){
+                    burpEasy.play();
+                }
+
             }
             if (beersDrunk == 30){
-                burpHard.play();
+                if (music){
+                    burpHard.play();
+                }
             }
         }
         if (
@@ -398,6 +406,17 @@ btnRestart.addEventListener("click", function () {
     nakov.speed = 256;
     beersToRakia = 4;
     reset();
+});
+
+//sound image
+btnMusic.addEventListener("click", function () {
+    if (music) {
+        soundPic.src = "images/mute.png";
+        music = false;
+    } else {
+        soundPic.src = "images/music-n.png";
+        music = true;
+    }
 });
 
 // The main game loop
