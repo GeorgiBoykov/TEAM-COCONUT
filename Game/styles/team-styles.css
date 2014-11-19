@@ -5,8 +5,8 @@ body{
 }
 
 header{
-    margin-left: 13%;
-    margin-top: -4%;
+    margin-left: 15%;
+
 }
 
 header p{
@@ -17,7 +17,7 @@ header p{
 }
 
 header p::first-letter{
-    font-size: 105px;
+    font-size: 30px;
 }
 
 nav{
@@ -72,9 +72,14 @@ a {
 .team{
     float:left;
     margin-left: 100px;
+    margin-top: -100px;
 }
+
 #name{
+    height:200px;
+    font-size: 25px;
     margin-bottom: 10px;
+    padding-bottom: 10px;
     margin-left: -100px;
 }
 #goBack{
