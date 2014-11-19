@@ -7,7 +7,6 @@ canvas.style.border = "2px solid black";
 var textColor = "#000033";
 var plus5 = false;
 
-canvas.style.margin = "5% 0 0 4.5%";
 
 var remainingTime = 30;
 var rakiyaTimeOut;

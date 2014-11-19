@@ -4,6 +4,12 @@ body {
     background-position-y: 4%;
 }
 
+canvas{
+    margin: 5% 0 0 4.5%;
+    /*float: right;*/
+    /*margin: 5% 7% 0 0;*/
+}
+
 a {
     text-decoration: none;
     color: red;
