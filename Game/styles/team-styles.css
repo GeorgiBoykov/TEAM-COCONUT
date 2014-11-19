@@ -11,7 +11,7 @@ header{
 
 header p{
     color: white;
-    font-family: papyrus, arial;
+    font-family: papyrus, arial, sans-serif;
     font-size: 95px;
     font-weight: bold;
 }
@@ -50,7 +50,7 @@ h2 {
 }
 
 .helpControls {
-    margin: 4% 0px 0px 7%;
+    margin: 4% 0 0 7%;
 }
 
 .controlsHelp {
@@ -81,13 +81,14 @@ a {
     margin-right: 4%;
     max-width: 150px;
     text-align: center;
+}
 
 h2 {
     color: white;
 }
 
 .helpControls {
-    margin: 4% 0px 0px 7%;
+    margin: 4% 0 0 7%;
 }
 
 .controlsHelp {
@@ -104,7 +105,6 @@ a {
 }
 
 #goBack {
-    margin: 0% 0px 0px 9%;
     max-width: 150px;
     display: inline-block;
 
@@ -114,18 +114,17 @@ a {
     background-image: -ms-linear-gradient(top, #7d6800, #000000);
     background-image: -o-linear-gradient(top, #7d6800, #000000);
     background-image: linear-gradient(to bottom, #7d6800, #000000);
-    -webkit-border-radius: 28;
-    -moz-border-radius: 28;
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
     border-radius: 28px;
     text-shadow: 5px 5px 12px #ffffff;
-    font-family: papyrus, arial;
+    font-family: papyrus, arial, sans-serif;
     font-weight: bold;
     color: #ff8c00;
     padding: 10px 20px 10px 20px;
     border: solid #ffffff 1px;
     text-decoration: none;
-    margin-top: 10px;
-    margin-left: -150px;
+    margin: 10px 0 0 -150px;
 }
 #goBack:hover{
     background: #000000;
