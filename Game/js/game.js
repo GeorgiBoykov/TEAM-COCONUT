@@ -14,6 +14,7 @@ var rakiyaTimeOut;
 
 var running = true;
 var btnPause = document.getElementById("btnPause");
+var btnRestart = document.getElementById("btnRestart");
 
 // Background image
 var bgReady = false;
@@ -315,6 +316,15 @@ btnPause.addEventListener("click", function(){
 		running = true;
 	}
 });
+
+//Restart
+btnRestart.addEventListener("click", function(){
+	remainingTime = 30;
+	beersDrunk = 0;
+	running = true;
+	reset();
+});
+
 
 // The main game loop
 var main = function () {
