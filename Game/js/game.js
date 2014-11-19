@@ -358,7 +358,7 @@ var highScore = function(){
 
     if (localStorage.length == 0){
         name = prompt("Enter your name: ");
-        localStorage.setItem("score", name, beersDrunk);
+        localStorage.setItem("score", beersDrunk);
     } else {
         var currentBest = localStorage.getItem("score");
 
