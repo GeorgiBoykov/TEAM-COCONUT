@@ -27,7 +27,7 @@ var score = {};
 var storage;
 var currentBest;
 
-var hScore = new HighScore();
+//var hScore = new HighScore();
 
 // Background image
 var bgReady = false;
