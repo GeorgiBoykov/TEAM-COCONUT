@@ -7,8 +7,7 @@ body{
 }
 
 header{
-    margin-left: 18%;
-    margin-top: -2%;
+    margin-left: 13%;
 }
 
 header p{
@@ -24,15 +23,17 @@ header p::first-letter{
 
 p {
     color: white;
-    font-family: papyrus, arial;
+    font-family: papyrus, arial, sans-serif;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 26px;
     text-align: center;
+    margin-top: 0%;
 }
 
 article {
     display: inline-block;
-    margin-left: 12%;
+    margin-left: 5%;
+    width: 220px;
 }
 
 .header {
@@ -41,17 +42,19 @@ article {
 
 section {
     max-width: 700px;
-    margin-left: 10%;
+    margin-left: 13%;
+    margin-top: -2%;
 }
 
 
 img {
-    width: 250px;
-    height: 250px;
+    width: 160px;
+    height: 160px;
+    margin-left: 11%;
 }
 
 .back {
-    margin: 0% 0px 0px 9%;
+    margin: 0% 0px 0px 28%;
     max-width: 150px;
     display: inline-block;
     background: #7d6800;

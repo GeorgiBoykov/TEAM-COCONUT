@@ -28,7 +28,6 @@ var gameoverSound = document.getElementById("gameover");   //Gameover sound
 var storage;
 var currentBest;
 
-var hScore = new HighScore();
 
 // Background image
 var bgReady = false;
@@ -373,7 +372,7 @@ var render = function () {
 
             isAlive = false;
 
-            hScore.highScore();
+            highScore();
 
         }
 
@@ -394,24 +393,22 @@ function countDown() {
 setInterval(countDown, 1000);
 
 //High Score
-function HighScore() {
-    this.highScore = function () {
-        var playerName;
-        this.result = {};
+var highScore = function () {
+    var playerName;
+    var result = {};
 
-        if (localStorage.length == 0) {
+    if (localStorage.length == 0) {
+        playerName = prompt("Enter your playerName: ");
+        result = {name: playerName, score: beersDrunk};
+        localStorage.setItem('result', JSON.stringify(result));
+    } else {
+        storage = JSON.parse(localStorage.getItem('result'));
+        currentBest = storage.score;
+
+        if (currentBest < beersDrunk) {
             playerName = prompt("Enter your playerName: ");
             result = {name: playerName, score: beersDrunk};
             localStorage.setItem('result', JSON.stringify(result));
-        } else {
-            storage = JSON.parse(localStorage.getItem('result'));
-            currentBest = storage.score;
-
-            if (currentBest < beersDrunk) {
-                playerName = prompt("Enter your playerName: ");
-                result = {name: playerName, score: beersDrunk};
-                localStorage.setItem('result', JSON.stringify(result));
-            }
         }
     }
 };

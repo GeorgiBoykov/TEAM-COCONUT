@@ -5,8 +5,12 @@ body{
 }
 
 header{
-    margin-left: 13%;
+    margin-left: 14%;
     margin-top: -4%;
+}
+
+#home{
+    margin-left: 13%;
 }
 
 header p{
@@ -56,7 +60,7 @@ article.controlsHelp{
 
 h2 {
     color: white;
-    width: 80%;
+    width: 84%;
     margin-left: 5%;
     font-family: papyrus, arial, sans-serif;
 }
@@ -79,7 +83,7 @@ img {
 }
 
 .back {
-    margin: 2% 0px 0px 28%;
+    margin: 2% 0px 0px 29%;
     max-width: 150px;
     display: inline-block;
     background: #7d6800;
@@ -116,7 +120,7 @@ img {
 table{
     width: 20%;
     margin-left: 23%;
-    margin-bottom: 15%;
+    margin-bottom: 10%;
 }
 
 table, tr, td, th{
