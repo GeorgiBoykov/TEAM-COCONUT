@@ -397,7 +397,7 @@ var highScore = function(){
     }
     //var p = JSON.parse(localStorage.getItem('score'))
     //console.log(p.name + " " + p.score);
-}
+};
 
 
 //Pause
@@ -417,6 +417,8 @@ btnRestart.addEventListener("click", function () {
     isAlive = true;
     nakov.speed = 256;
     beersToRakia = 4;
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
     reset();
 });
 
