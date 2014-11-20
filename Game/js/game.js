@@ -255,8 +255,8 @@ var update = function (modifier) {
         ) {
             if (music) {
                 var collectRakiya = getRakiya.cloneNode();
-                collectRakiya.play();
-            }
+            collectRakiya.play();
+        }
             beersToRakia = 4;
             nakov.speed = 256;
             throwRakiya = false;
