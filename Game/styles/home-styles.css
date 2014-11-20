@@ -45,12 +45,24 @@ nav ul li a:hover{
     color: #fd9802;
 }
 
+section.helpControls{
+    margin-top: -5%;
+    margin-bottom: 2%;
+}
+
+article.controlsHelp{
+    width: 20%;
+}
+
 h2 {
     color: white;
+    width: 80%;
+    margin-left: 5%;
+    font-family: papyrus, arial, sans-serif;
 }
 
 .helpControls {
-    margin: 4% 0px 0px 7%;
+    margin: 4% 0px 0px 5%;
 }
 
 .controlsHelp {
@@ -60,11 +72,14 @@ h2 {
 }
 
 img {
-    width: 55%;
+    width: 65%;
+    float: left;
+    margin-left: 13%;
+    margin-top: -5%;
 }
 
 .back {
-    margin: 2% 0px 0px 9%;
+    margin: 2% 0px 0px 28%;
     max-width: 150px;
     display: inline-block;
     background: #7d6800;
@@ -77,12 +92,13 @@ img {
     -moz-border-radius: 28px;
     border-radius: 28px;
     text-shadow: 5px 5px 12px #ffffff;
-    font-family: papyrus, arial;
+    font-family: papyrus, arial, sans-serif;
     font-weight: bold;
     color: #ff8c00;
     padding: 10px 20px 10px 20px;
     border: solid #ffffff 1px;
     text-decoration: none;
+    vertical-align: bottom;
 }
 
 .back:hover {
@@ -99,11 +115,17 @@ img {
 /*Table*/
 table{
     width: 20%;
-    margin-left: 27%;
+    margin-left: 23%;
+    margin-bottom: 15%;
 }
 
-#scoreTD, #nameTD{
+table, tr, td, th{
+    /*border: 1px solid red;*/
+}
+
+th, tr, td{
     color: #ffffff;
     font-size: 28px;
-    font-family: Tahoma, sans-serif;
+    font-family: papyrus, arial, sans-serif;
+    text-align: center;
 }
