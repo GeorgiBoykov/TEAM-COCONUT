@@ -21,6 +21,8 @@ var burpHard = document.getElementById("burpHard");
 var soundPic = document.getElementById("sound");
 var btnMusic = document.getElementById("btnMusic");
 var music = true;
+var getBeer = document.getElementById("getBeer");       //collect Beer sound
+var getRakiya = document.getElementById("getRakiya");   //collect Rakiya sound
 
 var name;
 var score = {};
@@ -223,6 +225,10 @@ var update = function (modifier) {
             && nakov.y <= (beer.y + 58)
             && beer.y <= (nakov.y + 65)
         ) {
+            if (music){
+                var collectBeer =  getBeer.cloneNode();
+                collectBeer.play();
+            }
             ++beersDrunk;
             beersToRakia--;
             nakov.speed -= 10;
@@ -248,6 +254,10 @@ var update = function (modifier) {
             && throwRakiya == true
             && rakiyaTimeOut > 0
         ) {
+            if (music){
+                var collectRakiya = getRakiya.cloneNode();
+                collectRakiya.play();
+            }
             beersToRakia = 4;
             nakov.speed = 256;
             throwRakiya = false;
@@ -426,7 +436,7 @@ btnRestart.addEventListener("click", function () {
 //music
 function playMusic(){
     if (music && running && isAlive){
-        bgMusic.play();
+        //bgMusic.play();
     } else{
         bgMusic.pause();
     }
