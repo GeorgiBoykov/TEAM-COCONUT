@@ -7,7 +7,7 @@ canvas.style.border = "2px solid black";
 var textColor = "#000033";
 var plus5 = false;
 
-var remainingTime = 30;
+var remainingTime = 3;
 var rakiyaTimeOut;
 
 var isAlive = true;
@@ -424,7 +424,7 @@ btnRestart.addEventListener("click", function () {
 
 //music
 function playMusic(){
-    if (music && running ){
+    if (music && running && isAlive){
         bgMusic.play();
     } else{
         bgMusic.pause();
