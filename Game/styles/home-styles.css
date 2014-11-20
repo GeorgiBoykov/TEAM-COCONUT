@@ -72,7 +72,6 @@ h2 {
 .controlsHelp {
     display: inline-block;
     text-align: center;
-    padding-right: 10px;
 }
 
 img {
@@ -114,6 +113,10 @@ img {
     background-image: linear-gradient(to bottom, #000000, #7d6800);
     text-decoration: none;
 	cursor: pointer;
+}
+
+.small {
+	font-size: 28px;
 }
 
 /*Table*/
