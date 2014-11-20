@@ -73,8 +73,8 @@ img {
     background-image: -ms-linear-gradient(top, #7d6800, #000000);
     background-image: -o-linear-gradient(top, #7d6800, #000000);
     background-image: linear-gradient(to bottom, #7d6800, #000000);
-    -webkit-border-radius: 28;
-    -moz-border-radius: 28;
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
     border-radius: 28px;
     text-shadow: 5px 5px 12px #ffffff;
     font-family: papyrus, arial;
@@ -94,4 +94,16 @@ img {
     background-image: linear-gradient(to bottom, #000000, #7d6800);
     text-decoration: none;
 	cursor: pointer;
+}
+
+/*Table*/
+table{
+    width: 20%;
+    margin-left: 27%;
+}
+
+#scoreTD, #nameTD{
+    color: #ffffff;
+    font-size: 28px;
+    font-family: Tahoma, sans-serif;
 }

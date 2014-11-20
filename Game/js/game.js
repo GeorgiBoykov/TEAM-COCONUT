@@ -7,7 +7,7 @@ canvas.style.border = "2px solid black";
 var textColor = "#000033";
 var plus5 = false;
 
-var remainingTime = 30;
+var remainingTime = 3;
 var rakiyaTimeOut;
 
 var isAlive = true;
@@ -25,12 +25,10 @@ var getBeer = document.getElementById("getBeer");       //collect Beer sound
 var getRakiya = document.getElementById("getRakiya");   //collect Rakiya sound
 var gameoverSound = document.getElementById("gameover");   //Gameover sound
 
-var name;
-var score = {};
 var storage;
 var currentBest;
 
-//var hScore = new HighScore();
+var hScore = new HighScore();
 
 // Background image
 var bgReady = false;
@@ -226,8 +224,8 @@ var update = function (modifier) {
             && nakov.y <= (beer.y + 58)
             && beer.y <= (nakov.y + 65)
         ) {
-            if (music){
-                var collectBeer =  getBeer.cloneNode();
+            if (music) {
+                var collectBeer = getBeer.cloneNode();
                 collectBeer.play();
             }
             ++beersDrunk;
@@ -235,14 +233,14 @@ var update = function (modifier) {
             nakov.speed -= 10;
             resetBeerPosition();
 
-            if (beersDrunk == 20){      // play burp
-                if (music){
+            if (beersDrunk == 20) {      // play burp
+                if (music) {
                     burpEasy.play();
                 }
 
             }
-            if (beersDrunk == 30){
-                if (music){
+            if (beersDrunk == 30) {
+                if (music) {
                     burpHard.play();
                 }
             }
@@ -255,7 +253,7 @@ var update = function (modifier) {
             && throwRakiya == true
             && rakiyaTimeOut > 0
         ) {
-            if (music){
+            if (music) {
                 var collectRakiya = getRakiya.cloneNode();
                 collectRakiya.play();
             }
@@ -358,15 +356,15 @@ var render = function () {
         }
 
         else {
-             if (pauseReady){                           // if pause is clicked
-                 ctx.drawImage(pauseImage, 290,180);
-             }
+            if (pauseReady) {                           // if pause is clicked
+                ctx.drawImage(pauseImage, 290, 180);
+            }
         }
 
 
         // Death Check
         if (remainingTime == 0) {
-            if (music){
+            if (music) {
                 gameoverSound.play();
             }
             ctx.drawImage(gameOverImg, 0, 0);
@@ -375,7 +373,8 @@ var render = function () {
 
             isAlive = false;
 
-            //highScore();
+            hScore.highScore();
+
         }
 
         playMusic();
@@ -394,25 +393,28 @@ function countDown() {
 }
 setInterval(countDown, 1000);
 
-////High Score
-//var highScore = function(){
-//    if (localStorage.length == 0){
-//        name = prompt("Enter your name: ");
-//        score = {name: name, score: beersDrunk};
-//        localStorage.setItem('score', JSON.stringify(score));
-//    } else {
-//        storage = JSON.parse(localStorage.getItem('score'));
-//        currentBest = storage.score;
-//
-//        if (currentBest < beersDrunk){
-//            name = prompt("Enter your name: ");
-//            score = {name: name, score: beersDrunk};
-//            localStorage.setItem('score', JSON.stringify(score));
-//        }
-//    }
-//    //var p = JSON.parse(localStorage.getItem('score'))
-//    //console.log(p.name + " " + p.score);
-//};
+//High Score
+function HighScore() {
+    this.highScore = function () {
+        var playerName;
+        this.result = {};
+
+        if (localStorage.length == 0) {
+            playerName = prompt("Enter your playerName: ");
+            result = {name: playerName, score: beersDrunk};
+            localStorage.setItem('result', JSON.stringify(result));
+        } else {
+            storage = JSON.parse(localStorage.getItem('result'));
+            currentBest = storage.score;
+
+            if (currentBest < beersDrunk) {
+                playerName = prompt("Enter your playerName: ");
+                result = {name: playerName, score: beersDrunk};
+                localStorage.setItem('result', JSON.stringify(result));
+            }
+        }
+    }
+};
 
 
 //Pause
@@ -420,7 +422,7 @@ btnPause.addEventListener("click", function () {
     if (running) {
         running = false;
     } else {
-		running = true;
+        running = true;
     }
 });
 
@@ -438,10 +440,10 @@ btnRestart.addEventListener("click", function () {
 });
 
 //music
-function playMusic(){
-    if (music && running && isAlive){
+function playMusic() {
+    if (music && running && isAlive) {
         //bgMusic.play();
-    } else{
+    } else {
         bgMusic.pause();
     }
 }
