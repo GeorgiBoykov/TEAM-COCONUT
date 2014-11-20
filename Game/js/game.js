@@ -14,11 +14,18 @@ var isAlive = true;
 var running = true;
 var btnPause = document.getElementById("btnPause");
 var btnRestart = document.getElementById("btnRestart");
+
+var bgMusic = document.getElementById("backgroundMusic");
 var burpEasy = document.getElementById("burpEasy");
 var burpHard = document.getElementById("burpHard");
 var soundPic = document.getElementById("sound");
 var btnMusic = document.getElementById("btnMusic");
 var music = true;
+
+var name;
+var score = {};
+var storage;
+var currentBest;
 
 
 // Background image
@@ -219,7 +226,7 @@ var update = function (modifier) {
             beersToRakia--;
             nakov.speed -= 10;
             resetBeerPosition();
-            
+
             if (beersDrunk == 20){      // play burp
                 if (music){
                     burpEasy.play();
@@ -355,6 +362,8 @@ var render = function () {
 
             highScore();
         }
+
+        playMusic();
     }
 };
 
@@ -372,19 +381,22 @@ setInterval(countDown, 1000);
 
 //High Score
 var highScore = function(){
-    var name;
-
     if (localStorage.length == 0){
         name = prompt("Enter your name: ");
-        localStorage.setItem("score", beersDrunk);
+        score = {name: name, score: beersDrunk};
+        localStorage.setItem('score', JSON.stringify(score));
     } else {
-        var currentBest = localStorage.getItem("score");
+        storage = JSON.parse(localStorage.getItem('score'));
+        currentBest = storage.score;
 
         if (currentBest < beersDrunk){
             name = prompt("Enter your name: ");
-            localStorage.setItem("score", beersDrunk);
+            score = {name: name, score: beersDrunk};
+            localStorage.setItem('score', JSON.stringify(score));
         }
     }
+    //var p = JSON.parse(localStorage.getItem('score'))
+    //console.log(p.name + " " + p.score);
 }
 
 
@@ -407,6 +419,15 @@ btnRestart.addEventListener("click", function () {
     beersToRakia = 4;
     reset();
 });
+
+//music
+function playMusic(){
+    if (music && running ){
+        bgMusic.play();
+    } else{
+        bgMusic.pause();
+    }
+}
 
 //sound image
 btnMusic.addEventListener("click", function () {
