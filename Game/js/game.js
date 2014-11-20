@@ -23,6 +23,7 @@ var btnMusic = document.getElementById("btnMusic");
 var music = true;
 var getBeer = document.getElementById("getBeer");       //collect Beer sound
 var getRakiya = document.getElementById("getRakiya");   //collect Rakiya sound
+var gameoverSound = document.getElementById("gameover");   //Gameover sound
 
 var name;
 var score = {};
@@ -365,6 +366,9 @@ var render = function () {
 
         // Death Check
         if (remainingTime == 0) {
+            if (music){
+                gameoverSound.play();
+            }
             ctx.drawImage(gameOverImg, 0, 0);
             ctx.fillStyle = '#f30000';
             ctx.fillText("TOTAL BEERS DRUNK: " + beersDrunk, 155, 420);
