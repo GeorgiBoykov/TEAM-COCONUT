@@ -2,6 +2,8 @@ body{
     background-image: url("../images/background-img.jpg");
     background-size: 100%;
     background-position-y: 4%;
+    background-repeat: no-repeat;
+    background-color: #000000;
 }
 
 header{
@@ -39,7 +41,7 @@ article {
 
 section {
     max-width: 700px;
-    margin-left: 12%;
+    margin-left: 10%;
 }
 
 
