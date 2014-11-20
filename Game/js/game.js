@@ -7,7 +7,7 @@ canvas.style.border = "2px solid black";
 var textColor = "#000033";
 var plus5 = false;
 
-var remainingTime = 3;
+var remainingTime = 30;
 var rakiyaTimeOut;
 
 var isAlive = true;
@@ -27,6 +27,7 @@ var score = {};
 var storage;
 var currentBest;
 
+var hScore = new HighScore();
 
 // Background image
 var bgReady = false;
@@ -360,7 +361,7 @@ var render = function () {
 
             isAlive = false;
 
-            highScore();
+            //highScore();
         }
 
         playMusic();
@@ -379,25 +380,25 @@ function countDown() {
 }
 setInterval(countDown, 1000);
 
-//High Score
-var highScore = function(){
-    if (localStorage.length == 0){
-        name = prompt("Enter your name: ");
-        score = {name: name, score: beersDrunk};
-        localStorage.setItem('score', JSON.stringify(score));
-    } else {
-        storage = JSON.parse(localStorage.getItem('score'));
-        currentBest = storage.score;
-
-        if (currentBest < beersDrunk){
-            name = prompt("Enter your name: ");
-            score = {name: name, score: beersDrunk};
-            localStorage.setItem('score', JSON.stringify(score));
-        }
-    }
-    //var p = JSON.parse(localStorage.getItem('score'))
-    //console.log(p.name + " " + p.score);
-};
+////High Score
+//var highScore = function(){
+//    if (localStorage.length == 0){
+//        name = prompt("Enter your name: ");
+//        score = {name: name, score: beersDrunk};
+//        localStorage.setItem('score', JSON.stringify(score));
+//    } else {
+//        storage = JSON.parse(localStorage.getItem('score'));
+//        currentBest = storage.score;
+//
+//        if (currentBest < beersDrunk){
+//            name = prompt("Enter your name: ");
+//            score = {name: name, score: beersDrunk};
+//            localStorage.setItem('score', JSON.stringify(score));
+//        }
+//    }
+//    //var p = JSON.parse(localStorage.getItem('score'))
+//    //console.log(p.name + " " + p.score);
+//};
 
 
 //Pause
